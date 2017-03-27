@@ -42,6 +42,26 @@ public class Main extends Application
         }
         barChart.getData().add(Data);
 
+        buttonhandler();
+
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(bubbleSortNextButton, quickSortNextButton, barChart);
+        Scene scene = new Scene(vbox, 700, 1000);
+
+        setStage(scene);
+    }
+
+    private void setStage(Scene scene)
+    {
+        primaryStage.setScene(scene);
+        primaryStage.setHeight(900);
+        primaryStage.setWidth(1200);
+
+        primaryStage.show();
+    }
+
+    public void buttonhandler()
+    {
         bubbleSortNextButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 BubbleSort();
@@ -53,16 +73,6 @@ public class Main extends Application
                 QuickSort();
             }
         });
-
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(bubbleSortNextButton, quickSortNextButton, barChart);
-        Scene scene = new Scene(vbox, 700, 1000);
-
-        primaryStage.setScene(scene);
-        primaryStage.setHeight(900);
-        primaryStage.setWidth(1200);
-
-        primaryStage.show();
     }
 
     public static void main(String[] args)
@@ -136,8 +146,8 @@ public class Main extends Application
     private void QuickSortRecursive(int low, int high) {
         System.out.println("the array is : " + Arrays.toString(arr));
         int i = low, j = high;
-
         int pivot = arr[low + (high-low)/2];
+
         System.out.println("The pivot is : " + pivot);
         while (i <= j) {
             while (arr[i] < pivot){
@@ -161,6 +171,12 @@ public class Main extends Application
             QuickSortRecursive(i, high);
         }
         init(primaryStage);
+    }
+
+    public void DivideArray(int i, int j, int pivot)
+    {
+
+
     }
 
     private void exchange(int i, int j) {
